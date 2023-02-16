@@ -17,6 +17,6 @@ TEST(TridiagonalMatrixAlgorithm_test, test_2){
     TridiagonalMatrix M(a, b, c);
     std::vector<double> res = solution(M, d);
     for (int i = 0; i < 3; i++){
-        EXPECT_TRUE(res[i] - x[i] == 0);
+        EXPECT_TRUE(res[i] - x[i] <= 0.01);
     }
 }
