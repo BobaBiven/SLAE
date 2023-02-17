@@ -5,19 +5,25 @@
 #include <iostream>
 #include <array>
 
-class TridiagonalMatrix {
-private:
-    struct element{
+struct element{
         double a, b, c;
     };
 
-public:
+class TridiagonalMatrix {
+private:
+
 
     std::vector<element> matrix;
+
+public:
+
+
 
     TridiagonalMatrix(std::vector<double> a, std::vector<double> b, std::vector<double> c);
 
     int get_size()const{return matrix.size();}
+
+    element operator() (int i) const;
 
     void print();
 
