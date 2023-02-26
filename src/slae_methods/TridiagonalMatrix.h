@@ -19,11 +19,11 @@ public:
 
 
 
-    TridiagonalMatrix(std::vector<double> a, std::vector<double> b, std::vector<double> c);
+    TridiagonalMatrix(std::vector<double>const& a, std::vector<double>const& b, std::vector<double>const& c);
 
     int get_size()const{return matrix.size();}
 
-    element operator() (int i) const;
+    element const& operator() (int i) const;
 
     void print();
 

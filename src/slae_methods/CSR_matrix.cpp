@@ -1,9 +1,24 @@
 #include "CSR_matrix.h"
 
-CSR::CSR(std::vector<double> val, std::vector<int> col, std::vector<int> row): c_num(col.size()), r_num(row.size()){
-		values = val;
-		cols = col;
-		rows = row;
+CSR::CSR(const int cols, const int rows, std::vector<double>const &matrix): c_num(cols), r_num(rows){
+	this->rows.resize(r_num);
+	this->cols.resize(c_num);
+	this->values.resize(cols * rows);
+	this->rows[0] = 0;
+	unsigned int t1 = 0, k = 0, t2 = 0, t3 = 0; // all of that and above to not use push_back()
+	for (int  i = 0; i < cols; i++){
+		for (int j = 0; j < rows; j++){
+			if(matrix [i * cols + j] != 0){
+				values[t1] = matrix[i * cols + j];
+				this->cols[t2] = 1;
+				++t2;
+				++k;
+			}
+		}
+		this->rows[t3] = k;
+	}
+
+
 
 }
 

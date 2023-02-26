@@ -31,7 +31,7 @@ class CSR{
 	std::vector<int> rows;
 public:
 	//3 готовых вектора
-	CSR(std::vector<double> val, std::vector<int> col, std::vector<int> row);
+	CSR(const int cols, const int rows, std::vector<double>const &matrix);
 
 	double operator()(int i, int j) const;
 

@@ -1,4 +1,4 @@
-ADD_SUBDIRECTORY (googletest-master)
+ADD_SUBDIRECTORY (gtest)
 enable_testing()
 include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 

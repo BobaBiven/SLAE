@@ -1,7 +1,7 @@
 #include "TridiagonalMatrix.h"
 #include "CSR_matrix.h"
 
-TridiagonalMatrix::TridiagonalMatrix(std::vector<double> a, std::vector<double> b, std::vector<double> c){
+TridiagonalMatrix::TridiagonalMatrix(std::vector<double>const& a, std::vector<double>const& b, std::vector<double>const& c){
     matrix = std::vector<element>(b.size());
 
     for (int i = 0; i < a.size(); ++i){
@@ -15,8 +15,8 @@ TridiagonalMatrix::TridiagonalMatrix(std::vector<double> a, std::vector<double> 
     }
 }
 
-element TridiagonalMatrix::operator() (int i) const{
-    return this->matrix[i];
+element const& TridiagonalMatrix::operator() (int i) const{
+        return this-> matrix[i];
 }
 
 void TridiagonalMatrix::print() {

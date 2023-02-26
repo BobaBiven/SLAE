@@ -5,7 +5,7 @@
 #include <vector>
 #include "TridiagonalMatrix.h"
 
-std::vector<double>solution(TridiagonalMatrix const &A, std::vector<double> d);
+std::vector<double>solution(TridiagonalMatrix const& A, std::vector<double>const& d);
 
 
 #endif //SLAE_TRIDIAGONALMATRIXALGORITHM_H
