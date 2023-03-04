@@ -30,7 +30,6 @@ double find_module(std::vector<double> v){
     for (unsigned int i = 0; i < v.size(); ++i){
         sum += v[i] * v[i];
     }
-    return std::sqrt(sum);
-
+    return sqrt(sum);
 }
 

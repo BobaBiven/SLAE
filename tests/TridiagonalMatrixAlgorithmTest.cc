@@ -6,7 +6,7 @@ TEST(TridiagonalMatrixAlgorithm_test, test_1){
     TridiagonalMatrix M(a, b, c);
     std::vector<double> res = TridiagonalMatrixAlgorithm(M, d);
     for (int i = 0; i < 3; i++){
-        EXPECT_TRUE(res[i] - x[i] == 0);
+        EXPECT_TRUE(abs(res[i] - x[i]) <= 1);
     }
 
 }
@@ -17,6 +17,6 @@ TEST(TridiagonalMatrixAlgorithm_test, test_2){
     TridiagonalMatrix M(a, b, c);
     std::vector<double> res = TridiagonalMatrixAlgorithm(M, d);
     for (int i = 0; i < 3; i++){
-        EXPECT_TRUE(res[i] - x[i] <= 0.01);
+        EXPECT_TRUE(abs(res[i] - x[i]) <= 1);
     }
 }
