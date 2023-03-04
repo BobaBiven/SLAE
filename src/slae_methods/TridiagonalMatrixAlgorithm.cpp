@@ -2,7 +2,7 @@
 #include "TridiagonalMatrix.h"
 
 
-std::vector<double>solution(TridiagonalMatrix const& A,  std::vector<double>const& d){
+std::vector<double>TridiagonalMatrixAlgorithm(TridiagonalMatrix const& A,  std::vector<double>const& d){
     std::vector<double>x(A.get_size());
     std::vector<double>p(A.get_size());
     std::vector<double>q(A.get_size());

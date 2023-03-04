@@ -4,13 +4,13 @@
 TridiagonalMatrix::TridiagonalMatrix(std::vector<double>const& a, std::vector<double>const& b, std::vector<double>const& c){
     matrix = std::vector<element>(b.size());
 
-    for (int i = 0; i < a.size(); ++i){
+    for (unsigned int i = 0; i < a.size(); ++i){
         matrix[i+1].a  = a[i];
     }
-    for (int i = 0; i < b.size(); ++i){
+    for (unsigned int i = 0; i < b.size(); ++i){
         matrix[i].b  = b[i];
     }
-    for (int i = 0; i < c.size(); ++i){
+    for (unsigned int i = 0; i < c.size(); ++i){
         matrix[i].c  = c[i];
     }
 }

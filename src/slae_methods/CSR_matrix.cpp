@@ -1,25 +1,18 @@
 #include "CSR_matrix.h"
 
-CSR::CSR(const int cols, const int rows, std::vector<double>const &matrix): c_num(cols), r_num(rows){
-	this->rows.resize(r_num);
-	this->cols.resize(c_num);
-	this->values.resize(cols * rows);
-	this->rows[0] = 0;
-	unsigned int t1 = 0, k = 0, t2 = 0, t3 = 0; // all of that and above to not use push_back()
-	for (int  i = 0; i < cols; i++){
-		for (int j = 0; j < rows; j++){
-			if(matrix [i * cols + j] != 0){
-				values[t1] = matrix[i * cols + j];
-				this->cols[t2] = 1;
-				++t2;
+CSR::CSR(std::vector<double>const& matrix, const int n, const int m): c_num(n), r_num(m){
+	unsigned int k = 0;
+	this->rows.push_back(k);
+	for (int j = 0; j < n; ++j){
+		for (int i = 0; i < m; ++i){
+			if (matrix[i + j * n] != 0){
+				values.push_back(matrix[i + j * m]);
+				cols.push_back(i);
 				++k;
 			}
 		}
-		this->rows[t3] = k;
+		rows.push_back(k);
 	}
-
-
-
 }
 
 double CSR::operator()(int i, int j) const{
@@ -35,8 +28,8 @@ double CSR::operator()(int i, int j) const{
 std::vector<double> CSR::operator*(std::vector<double> vec) const{
 	std::vector<double>res(r_num);
 	for (int i = 0; i < r_num; ++i){
-		for (int j = rows[i]; j << rows[i+1]; ++ i){
-			res[i] += values[j] * vec[j];
+		for (int j = rows[i]; j < rows[i+1]; ++ i){
+			res[i] += values[j] * vec[cols[j]];
 		}
 	}
 	return res;

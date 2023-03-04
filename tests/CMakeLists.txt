@@ -1,15 +1,21 @@
-ADD_SUBDIRECTORY (gtest)
+cmake_minimum_required(VERSION 3.24)
+set(CMAKE_CXX_STANDARD 17)
+
+include(FetchContent)
+FetchContent_Declare(
+  googletest
+  URL https://github.com/google/googletest/archive/03597a01ee50ed33e9dfd640b249b4be3799d395.zip
+)
+
+FetchContent_MakeAvailable(googletest)
+include(GoogleTest)
 enable_testing()
-include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 
-file(GLOB_RECURSE TEST_SOURCES *.cc)
+file(GLOB TEST_SOURCES "*.cc")
 
+add_executable(test ${TEST_SOURCES})
 
-foreach(TEST_FILE IN LISTS TEST_SOURCES)
-    get_filename_component(TEST_FILE_NAME ${TEST_FILE} NAME_WE)
-    set(EXECUTABLE_NAME run_${TEST_FILE_NAME})
-    add_executable(${EXECUTABLE_NAME} ${TEST_FILE})
-    target_link_libraries(${EXECUTABLE_NAME} my_project gtest gtest_main)
-    message("TEST_FILE: ${TEST_FILE}")
-    add_test(NAME ${EXECUTABLE_NAME} COMMAND ${EXECUTABLE_NAME})
-endforeach()
+target_link_libraries(test PRIVATE gtest_main SLAE_METHODS)
+target_include_directories(test PRIVATE ${CMAKE_SOURCE_DIR})
+
+gtest_discover_tests(test)
