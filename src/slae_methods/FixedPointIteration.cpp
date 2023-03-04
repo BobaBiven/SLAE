@@ -3,7 +3,7 @@
 std::vector<double> FixedPointIteration(CSR const& A, std::vector<double> const& b, double tau, std::vector<double>const& x_0, double tol){
     std::vector<double>x(x_0.size());
     x = x_0 - (A * x_0 - b) * tau;
-    while (find_module(x - b) >= tol){
+    while (find_module(b - A * x) >= tol){
         x = x - (A * x - b) * tau;
     }
     return x;

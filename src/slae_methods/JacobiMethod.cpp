@@ -8,7 +8,7 @@ std::vector<double>JacobiMethod(std::vector<double>const& b, CSR const& A, doubl
     for (unsigned int i = 0; i < D.size(); ++i){
         D[i] = 1 / A(i, i);
     }
-    while(find_module(x_1 - b) >= tol){
+    while(find_module(b - A * x_1) >= tol){
         for (unsigned int i = 0; i < x.size(); ++i){
             double s = 0;
             for (unsigned int j = 0; j < x.size(); ++j){
