@@ -12,14 +12,10 @@ std::vector<double>GaussSeidelMethod(std::vector<double>const& b, CSR const& A, 
         for (unsigned int i = 0; i < x.size(); ++i){
             double s = 0;
             for (unsigned int j = 0; j < i; ++j){
-                if (i != j){
-                    s+= A(i, j) * x_1[j];
-                }
+                s+= A(i, j) * x_1[j];
             }
-            for (unsigned int j = i; j < x.size(); ++j){
-                if (i != j){
-                    s+= A(i, j) * x[j];
-                }
+            for (unsigned int j = i + 1; j < x.size(); ++j){
+                s+= A(i, j) * x[j];
             }
             x_1[i] = D[i] * (b[i] - s);
         }
