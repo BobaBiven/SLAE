@@ -18,6 +18,10 @@ public:
 
 	std::vector<double> operator*(std::vector<double> vec) const;
 
+	const int getColumns() const;
+
+	const int getRows() const;
+
 };
 
 #endif

@@ -24,6 +24,13 @@ double CSR::operator()(int i, int j) const{
 	return 0;
 }
 
+const int CSR::getColumns() const{
+		return c_num;
+	}
+
+const int CSR::getRows() const{
+		return r_num;
+	}
 
 std::vector<double> CSR::operator*(std::vector<double> vec) const{
 	std::vector<double>res(r_num);

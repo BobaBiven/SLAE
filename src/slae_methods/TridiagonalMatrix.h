@@ -12,7 +12,6 @@ struct element{
 class TridiagonalMatrix {
 private:
 
-
     std::vector<element> matrix;
 
 public:

@@ -2,9 +2,11 @@
 
 
 std::vector<double>JacobiMethod(std::vector<double>const& b, CSR const& A, double tol, std::vector<double> x_0){
+
     std::vector<double>x = x_0;
     std::vector<double>x_1(x_0.size());
     std::vector<double>D(x_0.size());
+
     for (unsigned int i = 0; i < D.size(); ++i){
         D[i] = 1 / A(i, i);
     }

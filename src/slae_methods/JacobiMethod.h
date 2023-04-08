@@ -1,7 +1,7 @@
 #ifndef SLAE_JACOBIMETHOD
 #define SLAE_JACOBIMETHOD
 
-#include "FixedPointIteration.h"
+#include "tools.h"
 #include "CSR_matrix.h"
 
 
