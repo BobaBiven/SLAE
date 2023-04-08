@@ -11,7 +11,7 @@ std::vector<double>GaussSeidelMethod(std::vector<double>const& b, CSR const& A, 
         D[i] = 1 / A(i, i);
     }
 
-    while(find_module(b - A * x_1) >= tol){
+    while(find_module(b - A * x_1) > tol){
         for (size_t i = 0; i < x.size(); ++i){
             double s = 0;
             for (size_t j = 0; j < i; ++j){

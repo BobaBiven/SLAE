@@ -1,6 +1,6 @@
 #include "GradientDescent.h"
 
-std::vector<double> grad_desc(std::vector<double>const& b, CSR const& A, double tol, std::vector<double>const& x_0){
+std::vector<double> grad_desc(CSR const& A, std::vector<double>const& b, double tol, std::vector<double>const& x_0){
 
     std::vector<double> x = x_0;
     std::vector<double> r = A * x - b;

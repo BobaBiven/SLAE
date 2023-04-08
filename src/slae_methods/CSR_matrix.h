@@ -16,7 +16,7 @@ public:
 
 	double operator()(int i, int j) const;
 
-	std::vector<double> operator*(std::vector<double> vec) const;
+	std::vector<double> operator*(std::vector<double>const& vec)const;
 
 	const int getColumns() const;
 

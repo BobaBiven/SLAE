@@ -8,11 +8,13 @@ std::vector<double> conjGrad(CSR const& A, std::vector<double>const& b, std::vec
     double aa, bb;
 
     while (find_module(r) > tol){
-        auto prev = DotProduct(d, r);
-        aa = prev / DotProduct(d, (A * d));
+        bb = DotProduct(d, r);
+        aa = bb / DotProduct(d, (A * d));
         x = x - aa * d;
+
+        d = DotProduct(r, r) / bb * d + r;
+
         r = A * x - b;
-        d = DotProduct(r, r) / prev * d + r;
     }
     return x;
 }

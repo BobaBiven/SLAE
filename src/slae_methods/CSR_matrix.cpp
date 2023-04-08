@@ -32,10 +32,10 @@ const int CSR::getRows() const{
 		return r_num;
 	}
 
-std::vector<double> CSR::operator*(std::vector<double> vec) const{
+std::vector<double> CSR::operator*(std::vector<double>const& vec) const{
 	std::vector<double>res(r_num);
 	for (int i = 0; i < r_num; ++i){
-		for (int j = rows[i]; j < rows[i+1]; ++ i){
+		for (int j = rows[i]; j < rows[i+1]; ++j){
 			res[i] += values[j] * vec[cols[j]];
 		}
 	}
