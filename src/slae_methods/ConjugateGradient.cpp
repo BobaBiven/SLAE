@@ -11,10 +11,10 @@ std::vector<double> conjGrad(CSR const& A, std::vector<double>const& b, std::vec
         bb = DotProduct(d, r);
         aa = bb / DotProduct(d, (A * d));
         x = x - aa * d;
-
+        r = A * x - b;
         d = DotProduct(r, r) / bb * d + r;
 
-        r = A * x - b;
+
     }
     return x;
 }
