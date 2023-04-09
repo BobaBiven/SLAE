@@ -57,42 +57,44 @@ int main(){
 //
 //
     //задание 2
-    std::vector<double>m = {3, 0, 0, 0, 0, 3, 0, 0, 0, 0, 4, 0, 0, 0, 0, 4.5}, b = {5, 5, 5, 5}, c = {4, 4, 4, 4}, x_0(4), x1, x2, x3, x4, x5;
+    std::vector<double>m = {6, 0, 0, 0, 0, 6, 0, 0, 0, 0, 8, 0, 0, 0, 0, 9}, b = {5, 5, 5, 5}, c = {4, 4, 4, 4}, x_0(4), x1, x2, x3, x4, x5;
     CSR A(m, 4, 4);
-    x1 = FixedPointIteration(A, b, 2.0 * 0.9 / 4.5, x_0, 1e-13); //пункт 1
-    x2 = FixedPointIteration(A, b, 2.0 / (4.5 + 3), x_0, 1e-13); //пункт 2
+    x1 = FixedPointIteration(A, b, 2.0 * 0.9 / 9, x_0, 1e-13); //пункт 1
+    x2 = FixedPointIteration(A, b, 2.0 / (9 + 6), x_0, 1e-13); //пункт 2
     x3 = grad_desc(A, b, 1e-13, x_0); //пункт 3
     //x4 = FastFIP(A, b, x_0, 1e-13, 3, 4.5, 3); //пункт 4
     x5 = conjGrad(A, b, x_0, 1e-13);
+
+
         std::ofstream out;
     out.open("../kr2/task2.txt");
 
     for (int i = 0; i < 4; i++){
-            out << c[i] + b[i] * x1[i] + x1[i] * x1[i] * A(i, i) << " ";
+            out << c[i] + b[i] * x1[i] + x1[i] * x1[i] * A(i, i) / 2 << " ";
     }
     out << std::endl;
 
     for (int i = 0; i < 4; i++){
-            out << c[i] + b[i] * x2[i] + x2[i] * x2[i] * A(i, i) << " ";
+            out << c[i] + b[i] * x2[i] + x2[i] * x2[i] * A(i, i) / 2 << " ";
     }
     out << std::endl;
 
 
     for (int i = 0; i < 4; i++){
-            out << c[i] + b[i] * x3[i] + x3[i] * x3[i] * A(i, i) << " ";
+            out << c[i] + b[i] * x3[i] + x3[i] * x3[i] * A(i, i) / 2 << " ";
     }
     out << std::endl;
 
 
     // for (int i = 0; i < 4; i++){
-    //         out << c[i] + b[i] * x1[i] + x1[i] * x1[i] * A(i, i) << " ";
+    //         out << c[i] + b[i] * x1[i] + x1[i] * x1[i] * A(i, i) / 2 << " ";
     // }
     // out << std::endl;
 
     out << "FastFIP cring" << std::endl;
 
     for (int i = 0; i < 4; i++){
-            out << c[i] + b[i] * x5[i] + x5[i] * x5[i] * A(i, i) << " ";
+            out << c[i] + b[i] * x5[i] + x5[i] * x5[i] * A(i, i) / 2 << " ";
     }
     out << std::endl;
 
