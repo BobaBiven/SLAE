@@ -18,9 +18,9 @@ public:
 
 	std::vector<double> operator*(std::vector<double>const& vec)const;
 
-	std::vector<int>get_cols()const;
+	std::vector<int>const& get_cols()const;
 
-	std::vector<int>get_rows()const;
+	std::vector<int>const& get_rows()const;
 
 	std::vector<double>get_values()const;
 

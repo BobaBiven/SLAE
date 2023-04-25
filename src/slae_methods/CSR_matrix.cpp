@@ -24,12 +24,12 @@ double CSR::operator()(int i, int j) const{
 	return 0;
 }
 
-std::vector<int>CSR::get_cols()const{
-		return this->cols;
+std::vector<int>const& CSR::get_cols()const{
+		return cols;
 }
 
-std::vector<int>CSR::get_rows()const{
-		return this->rows;
+std::vector<int>const& CSR::get_rows()const{
+		return rows;
 }
 // const int CSR::getColumns() const{
 // 		return c_num;
