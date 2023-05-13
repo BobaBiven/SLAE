@@ -14,6 +14,8 @@ class CSR{
 public:
 	CSR(std::vector<double>const &matrix, const int cols, const int rows);
 
+	CSR(std::vector<double> els, const std::vector<int>& c, const std::vector<int>& r, const int &h, const int &w);
+
 	double operator()(int i, int j) const;
 
 	std::vector<double> operator*(std::vector<double>const& vec)const;
@@ -24,7 +26,7 @@ public:
 
 	std::vector<double>get_values()const;
 
-
+	CSR transpose() const;
 
 };
 

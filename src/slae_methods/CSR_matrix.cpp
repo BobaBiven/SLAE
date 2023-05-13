@@ -15,6 +15,12 @@ CSR::CSR(std::vector<double>const& matrix, const int n, const int m): c_num(n), 
 	}
 }
 
+CSR::CSR(std::vector<double> els, const std::vector<int>& c, const std::vector<int>& r, const int &h, const int &w) : r_num(h), c_num(w) {
+	values = els;
+	rows = r;
+	cols = c;
+};
+
 double CSR::operator()(int i, int j) const{
 	for (int k = rows[i]; k < rows[i+1]; ++k){
 		if (cols[k] == j){
@@ -53,6 +59,35 @@ std::vector<double>CSR::get_values() const{
 	return values;
 }
 
-
+CSR CSR::transpose() const {
+	int Nonzero = values.size();
+	std::vector<double> tmatrix_els(Nonzero);
+	std::vector<int> tCols(Nonzero);
+	std::vector<int> tRows(c_num + 1);
+	for (int i = 0; i < Nonzero; ++i) tRows[cols[i] + 1]++;
+	int S = 0;
+	int tmp;
+	for (int i = 1; i <= c_num; ++i) {
+		tmp = tRows[i];
+		tRows[i] = S;
+		S += tmp;
+	}
+	int j1, j2, Col, RIndex, IIndex;
+	double V;
+	for (int i = 0; i < r_num; ++i) {
+		j1 = rows[i];
+		j2 = rows[i+1];
+		Col = i;
+		for (int j = j1; j < j2; ++j) {
+			V = values[j];
+			RIndex = cols[j];
+			IIndex = tRows[RIndex + 1];
+			tmatrix_els[IIndex] = V;
+			tCols[IIndex] = Col;
+			tRows[RIndex + 1]++;
+		}
+	}
+	return CSR(tmatrix_els, tCols, tRows, r_num, c_num);
+}
 
 

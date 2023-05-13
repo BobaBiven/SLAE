@@ -18,6 +18,7 @@ std::vector<double>GaussSeidelMethod(CSR const& A, std::vector<double>const& b, 
             for(int j = rows[i]; j < rows[i+1]; ++j){
                 if(static_cast<int>(i) == cols[j]){
                     d =  A(i, cols[j]);
+                    continue;
                 }
                 x[i] = x[i] - vals[j] * x[cols[j]];
             }
@@ -30,3 +31,4 @@ std::vector<double>GaussSeidelMethod(CSR const& A, std::vector<double>const& b, 
     return x;
 
 }
+

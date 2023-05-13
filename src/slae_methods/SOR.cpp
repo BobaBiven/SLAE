@@ -7,24 +7,28 @@ std::vector<double> SOR(CSR const& A, std::vector<double>const& b, std::vector<d
     std::vector<double>r = A * x - b;
     std::vector<int>cols = A.get_cols();
     std::vector<int>rows = A.get_rows();
+    std::vector<double>vals = A.get_values();
 
     while(find_module(r) > tol){
 
-        for (size_t i = 0; i < rows.size(); ++i){
-            double s = 0, d;
-            int tmp = i;
-            for(int j = rows[i-1]; j < rows[i]; ++i){
-                if(tmp-1 != cols[j]){
-                    s += x[cols[j]] * A.get_values()[j];
+        for (size_t i = 0; i < x.size(); ++i){
+            double d;
+            double t = x[i];
+            x[i] = b[i] * w;
+            for(int j = rows[i]; j < rows[i+1]; ++j){
+                if(static_cast<int>(i) == cols[j]){
+                    d =  A(i, cols[j]);
+                    continue;
                 }
-                else{
-                    d = 1 / A.get_values()[j];
-                }
+                x[i] = x[i] - w * vals[j] * x[cols[j]];
             }
-            x[i-1] = d * (w * b[i-1] - w * s + (1 - w) * d * x[i-1]);
-        }
+            x[i] /= d;
+            x[i] += (1 - w) * t;
 
+        }
+        r = A * x - b;
     }
+
     return x;
 }
 
