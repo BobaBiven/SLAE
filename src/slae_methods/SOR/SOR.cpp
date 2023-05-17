@@ -1,5 +1,4 @@
 #include "SOR.h"
-#include "tools.h"
 
 std::vector<double> SOR(CSR const& A, std::vector<double>const& b, std::vector<double>const& x_0,  double tol, double w){
 

@@ -1,5 +1,4 @@
 #include "ConjugateGradient.h"
-#include "tools.h"
 
 std::vector<double> conjGrad(CSR const& A, std::vector<double>const& b, std::vector<double> const& x_0, double tol) {
     std::vector<double> x = x_0;

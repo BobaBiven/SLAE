@@ -1,6 +1,4 @@
 #include "GaussSeidelMethod.h"
-#include "tools.h"
-#include <iostream>
 
 
 std::vector<double>GaussSeidelMethod(CSR const& A, std::vector<double>const& b, double tol, std::vector<double>const& x_0){

@@ -6,8 +6,8 @@
 
 
 class CSR{
-	const int c_num;
 	const int r_num;
+	const int c_num;
 	std::vector<double> values;
 	std::vector<int> cols;
 	std::vector<int> rows;

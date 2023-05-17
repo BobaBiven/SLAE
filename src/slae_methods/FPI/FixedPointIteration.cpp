@@ -1,5 +1,4 @@
 #include "FixedPointIteration.h"
-#include "tools.h"
 //#include <fstream>
 //#include <iostream>
 
@@ -48,8 +47,16 @@ std::vector<double>ChebyshevRoots(const int n, const double l_min, const double 
         si = roots[i-1] * c_sin + si * c_cos;
     }
 
-    for (int i = 1; i < n; ++i) {
-        roots[i-1] = 0.5 * (l_max + l_min + roots[i-1] * (l_max - l_min));
+    std::vector<int> order(n);
+    order[0] = 1;
+    for (int i = 1; i < n; i = i * 2){
+        for(int j = 0; j < i; ++j){
+            order[n * (j * 2 + 1) / (2 * i)] = 2 * i  + 1 - order[n * 2 * j / (2 * i)];
+        }
+    }
+
+    for (int i = 0; i < n; ++i) {
+        roots[i] = 2 / ((l_max + l_min) + (l_max - l_min) * roots[order[i] - 1]);
     }
 
     return roots;

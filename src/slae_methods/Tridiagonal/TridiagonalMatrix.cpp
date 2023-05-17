@@ -1,5 +1,4 @@
 #include "TridiagonalMatrix.h"
-#include "CSR_matrix.h"
 
 TridiagonalMatrix::TridiagonalMatrix(std::vector<double>const& a, std::vector<double>const& b, std::vector<double>const& c){
     matrix = std::vector<element>(b.size());
