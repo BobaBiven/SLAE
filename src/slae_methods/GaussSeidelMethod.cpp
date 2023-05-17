@@ -33,10 +33,6 @@ std::vector<double>GaussSeidelMethod(CSR const& A, std::vector<double>const& b, 
 }
 
 
-
-
-
-
 std::vector<double>Iteration(CSR const& A, std::vector<double> b, std::vector<double>const& x_0){
     std::vector<double> vals = A.get_values();
     std::vector<int>cols = A.get_cols();
@@ -55,14 +51,6 @@ std::vector<double>Iteration(CSR const& A, std::vector<double> b, std::vector<do
         }
         x[i] = x[i] / d;
     }
-    return x;
-}
-
-std::vector<double>DownIteration(CSR const& A, std::vector<double> b, std::vector<double>const& x_0){
-    std::vector<double> vals = A.get_values();
-    std::vector<int>cols = A.get_cols();
-    std::vector<int>rows = A.get_rows();
-    std::vector<double>x = x_0;
 
     for (size_t i = b.size(); i >= 0; --i){
         double d;
@@ -76,8 +64,11 @@ std::vector<double>DownIteration(CSR const& A, std::vector<double> b, std::vecto
         }
         x[i] = x[i] / d;
     }
+
     return x;
 }
+
+
 
 std::vector<double>SymmetrizedGaussSeidel(CSR const& A, std::vector<double> b, std::vector<double>const& x_0, double tol){
     std::vector<double> x = x_0;
@@ -85,7 +76,6 @@ std::vector<double>SymmetrizedGaussSeidel(CSR const& A, std::vector<double> b, s
 
     while (find_module(r) > tol) {
         x = Iteration(A, b, x);
-        x = DownIteration(A, b, x);
         r = A * b - x;
     }
     return x;
