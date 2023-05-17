@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "../src/slae_methods/TridiagonalMatrixAlgorithm.h"
+#include "../src/slae_methods/Tridiagonal/TridiagonalMatrixAlgorithm.h"
 
 TEST(TridiagonalMatrixAlgorithm_test, test_1){
     std::vector<double> a = {2, 5}, b = {1, 4, 7}, c = {3, 6}, d = {1, 2, 3}, x = {0, 0.5, 0};

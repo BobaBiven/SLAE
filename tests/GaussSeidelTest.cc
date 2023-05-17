@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "../src/slae_methods/GaussSeidelMethod.h"
+#include "../src/slae_methods/GS/GaussSeidelMethod.h"
 #include <iostream>
 
 TEST(GSTest, test1){

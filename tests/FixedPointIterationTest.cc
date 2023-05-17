@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "../src/slae_methods/FixedPointIteration.h"
+#include "../src/slae_methods/FPI/FixedPointIteration.h"
 #include <iostream>
 
 TEST(FIPtest, test1){
