@@ -23,14 +23,9 @@ std::vector<double> FastFIP(CSR const& A, std::vector<double> const& b, std::vec
     std::vector<double> r = A * x - b;
     std::vector<double> roots = ChebyshevRoots(n, l_min, l_max);
 
-    //std::ofstream out;
-    //out.open("./r.txt"); //
-
     while (find_module(r) > tol){
-        //out << find_module(r) << std::endl;
         for (size_t i = 0; i < roots.size(); ++i){
             x = x - 1 / roots[i] * r;
-            //std::cout << roots[i] << " ";
             r = A * x - b;
         }
     }
@@ -59,3 +54,6 @@ std::vector<double>ChebyshevRoots(const int n, const double l_min, const double 
 
     return roots;
 }
+
+
+
